@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "FB Auto Client Finder",
+  "version": "1.0",
+  "description": "Auto comments on relevant Facebook posts and joins groups",
+  "permissions": [
+    "activeTab", 
+    "scripting", 
+    "storage", 
+    "debugger",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://*.facebook.com/*", 
+    "http://localhost:8000/*"
+  ],
+  "background": { 
+    "service_worker": "background.js" 
+  },
+  "action": { 
+    "default_popup": "popup.html" 
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.facebook.com/*"],
+      "js": ["content.js", "group_joiner.js"],
+      "css": ["content.css"]
+    }
+  ]
+}
